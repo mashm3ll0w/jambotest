@@ -30,9 +30,11 @@ class Business(models.Model):
   location_information = models.CharField(max_length=255, null=False)
 
   @property
-  def age_of_the_business(self):
+  def business_age(self):
     today = date.today()
-    reg_date = parse(self.registration_date)
+    reg_date = self.registration_date
+    #If using PostgreSQL, use the below to convert the date to a datetime
+    #reg_date = parse(self.registration_date)
     age = relativedelta.relativedelta(today, reg_date)
     return f"{age.years} Years {age.months} Months {age.days} Days"
 

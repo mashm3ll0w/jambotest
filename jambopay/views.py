@@ -39,7 +39,7 @@ def businesses(request):
                       'owner': business.owner.name,
                       'category': business.category,
                       'registration_date': business.registration_date,
-                      'age_of_the_business': business.age_of_the_business} for business in businesses]
+                      'business_age': business.business_age} for business in businesses]
   return JsonResponse({'businesses': businesses_data}, safe=False)
 
 def business(request, pk):
@@ -49,7 +49,7 @@ def business(request, pk):
   try:
       business = Business.objects.select_related('owner').get(pk=pk)
       business_data = model_to_dict(business)
-      business_data['age_of_the_business'] = business.age_of_the_business
+      business_data['business_age'] = business.business_age
       return JsonResponse(business_data)
   except Business.DoesNotExist:
       return JsonResponse({'error': 'Business not found'}, status=404)
