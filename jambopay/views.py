@@ -49,6 +49,7 @@ def business(request, pk):
   try:
       business = Business.objects.select_related('owner').get(pk=pk)
       business_data = model_to_dict(business)
+      business_data['owner'] = business.owner.name
       business_data['business_age'] = business.business_age
       return JsonResponse(business_data)
   except Business.DoesNotExist:
