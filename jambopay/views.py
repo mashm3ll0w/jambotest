@@ -8,9 +8,9 @@ def index(request):
   return JsonResponse({"message": "Welcome to the test application",
                        "routes": {
                          "customers": "/customers",
-                         "customer": "/customer/id",
+                         "customer": "/customers/id",
                          "businesses": "/businesses",
-                         "business": "/business/id"
+                         "business": "/businesses/id"
                          }})
 
 def customers(request):
@@ -47,10 +47,10 @@ def business(request, pk):
   Returns a the details of a single business, including the owner
   """
   try:
-      business = Business.objects.select_related('owner').get(pk=pk)
+      business = Business.objects.select_related('owner').get(pk=int(pk))
       business_data = model_to_dict(business)
       business_data['owner'] = business.owner.name
       business_data['business_age'] = business.business_age
       return JsonResponse(business_data)
-  except Business.DoesNotExist:
+  except (Business.DoesNotExist, ValueError):
       return JsonResponse({'error': 'Business not found'}, status=404)
