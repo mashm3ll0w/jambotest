@@ -72,7 +72,8 @@ def businesses(request):
                         "owner": business.owner.name,
                         "category": business.category,
                         "registration_date": business.registration_date,
-                        "business_age": business.business_age} for business in businesses]
+                        "business_age": business.business_age,
+                        "location_information": business.location_information} for business in businesses]
     return JsonResponse({"businesses": businesses_data}, safe=False)
   elif request.method == "POST":
     data = request.POST
@@ -84,7 +85,8 @@ def businesses(request):
                         "owner": business.owner.name,
                         "category": business.category,
                         "registration_date": business.registration_date,
-                        "business_age": business.business_age}, status=201)
+                        "business_age": business.business_age,
+                        "location_information": business.location_information}, status=201)
     else:
         return JsonResponse(form.errors, status=400)
 
