@@ -1,6 +1,6 @@
 from ninja import NinjaAPI
 from jambopay.models import Customer, Business
-from jambopay.schema import CustomerSchema, BusinessSchema, MessageSchema
+from jambopay.schema import CustomerSchema, BusinessSchema, MessageSchema, BusinessCreateSchema
 
 api = NinjaAPI()
 
@@ -62,9 +62,10 @@ def business(request, business_id):
 
 # Create a new Business
 @api.post("/businesses", response={201: BusinessSchema})
-def create_business(request, business: BusinessSchema):
-  Business.objects.create(**business.dict())
-  return business
+def create_business(request, business: BusinessCreateSchema):
+  business_data = business.model_dump()
+  business_model = Business.objects.create(**business_data)
+  return business_model
 
 # Edit Business details
 @api.put("/businesses/{business_id}", response={200: BusinessSchema, 404: MessageSchema})
