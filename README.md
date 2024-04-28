@@ -19,11 +19,13 @@
 
 ## Introduction
 
-Welcome to the Jambo App! This document provides detailed information on setting up the server locally, API endpoints, Limitations and Assumpitions.
+Welcome to the Jambo App! This document provides detailed information on setting up the server locally, API endpoints, Limitations and Assumptions.
 
 ---
 
 ## Local Server Setup
+
+### Main branch (this one) or [Ninja branch](https://github.com/mashm3ll0w/jambotest/tree/ninja)
 
 ### Clone The Repository
 
@@ -46,6 +48,9 @@ $ python3 -m venv venv
 
 # Activate Virtual Env
 $ source venv/bin/activate
+
+# The **main** branch uses plain django, and the **ninja** branch uses the ninja framework
+$ git checkout main || git checkout ninja
 
 # Install Dependencies
 $ pip install -r requirements.txt
@@ -282,7 +287,8 @@ _status code: 204_
 
 ## Limitations and Assumptions
 
-- Assumed no use of external API frameworks, e.g **Django Rest Framework** or **Django Ninja**, just creating an API with plain Django
+- Assumed no use of external API frameworks, e.g **Django Rest Framework** or **Django Ninja**
+- [**Django Ninja**] used in the [**ninja**](https://github.com/mashm3ll0w/jambotest/tree/ninja) branch
 - Used the decorator **@csrf_exempt** to allow easy testing with [**Postman**](https://www.postman.com/)
 - Used the bundled **SQLite** over a feature rich DB like **PostgreSQL**
 
