@@ -10,10 +10,10 @@ class CustomerSchema(Schema):
 
 class BusinessSchema(Schema):
   name: str
-  owner: CustomerSchema = None
+  owner: CustomerSchema
   category: str
   registration_date: datetime
   location_information: str
 
-class NotFoundSchema(Schema):
+class MessageSchema(Schema):
   message: str
