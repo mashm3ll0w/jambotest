@@ -19,6 +19,8 @@
 
 Welcome to the Jambo App! This document provides detailed information on setting up the server locally, API endpoints, Limitations and Assumptions.
 
+Django Ninja was used as it is more efficient and faster than Plain Django, Django REST-framework and Flask as shown by this [benchmark](https://github.com/vitalik/django-ninja-benchmarks) results.
+
 ---
 
 ## Local Server Setup
@@ -88,6 +90,7 @@ The documentation for the api can be found at `api/docs`
 ## Limitations and Assumptions
 
 - Used the bundled **SQLite** over a feature rich DB like **PostgreSQL**
+- Plain django was used for the project in the [**main**](https://github.com/mashm3ll0w/jambotest/tree/main) branch
 
 ## Authors
 
