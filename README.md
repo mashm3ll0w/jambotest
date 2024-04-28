@@ -47,6 +47,9 @@ $ python3 -m venv venv
 # Activate Virtual Env
 $ source venv/bin/activate
 
+# Switch to the ninja branch
+$ git switch ninja
+
 # Install Dependencies
 $ pip install -r requirements.txt
 ```
@@ -62,6 +65,9 @@ $ pipenv --python 3.10
 # Activate virtual env
 $ pipenv shell
 
+# Switch to the ninja branch
+$ git switch ninja
+
 # install dependencies in requirements.txt or pipfile
 $ pipenv install
 ```
@@ -76,7 +82,7 @@ $ python3 manage.py runserver
 
 ### Customers Endpoint
 
-`GET '/customers/'`
+`GET 'api/customers/'`
 
 - Retrieves all customers from the database
 - Returns: JSON response with an array of customer objects containing `id`, `name`, `phone`, `email`, `date_of_birth` and `nationality`
@@ -110,7 +116,7 @@ _status code: 200_
 
 ---
 
-`GET '/customers/${id}'`
+`GET 'api/customers/${id}'`
 
 - Retrieves a customer from the database using customer id
 - Path Parameter: `id`- integer ID of the customer to retrieve
@@ -133,7 +139,7 @@ _status code: 200_
 
 ---
 
-`POST '/customers/'`
+`POST 'api/customers/'`
 
 - Creates a new customer object
 - Returns: JSON response with the new customer object containing `id`, `name`, `phone`, `email`, `date_of_birth` and `nationality`
@@ -155,7 +161,7 @@ _status code: 201_
 
 ---
 
-`DELETE '/customers/${id}'`
+`DELETE 'api/customers/${id}'`
 
 - Deletes a customer from the database using customer id
 - Path Parameter: `id`- integer ID of the customer to delete
@@ -175,7 +181,7 @@ _status code: 204_
 
 ### Businesses Endpoint
 
-`GET '/businesses/'`
+`GET 'api/businesses/'`
 
 - Retrieves all businesses from the database
 - Returns: JSON response with an array of business objects containing `id`, `name`, `owner`, `category`, `registration_date`, `business_age` and `location_information`
@@ -211,7 +217,7 @@ _status code: 200_
 
 ---
 
-`GET '/businesses/${id}'`
+`GET 'api/businesses/${id}'`
 
 - Retrieves a business from the database using business id
 - Path Parameter: `id`- integer ID of the business to retrieve
@@ -235,7 +241,7 @@ _status code: 200_
 
 ---
 
-`POST '/businesses/'`
+`POST 'api/businesses/'`
 
 - Creates a new business object
 - Returns: JSON response with the new business object containing `id`, `name`, `owner`, `category`, `registration_date`, `business_age` and `location_information`
@@ -258,7 +264,7 @@ _status code: 201_
 
 ---
 
-`DELETE '/business/${id}'`
+`DELETE 'api/business/${id}'`
 
 - Deletes a business from the database using business id
 - Path Parameter: `id`- integer ID of the business to delete
@@ -282,8 +288,6 @@ _status code: 204_
 
 ## Limitations and Assumptions
 
-- Assumed no use of external API frameworks, e.g **Django Rest Framework** or **Django Ninja**, just creating an API with plain Django
-- Used the decorator **@csrf_exempt** to allow easy testing with [**Postman**](https://www.postman.com/)
 - Used the bundled **SQLite** over a feature rich DB like **PostgreSQL**
 
 ## Authors
