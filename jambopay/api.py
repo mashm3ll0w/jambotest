@@ -67,7 +67,7 @@ def create_business(request, business: BusinessSchema):
   return business
 
 # Edit Business details
-@api.put("/business/{business_id}", response={200: BusinessSchema, 404: MessageSchema})
+@api.put("/businesses/{business_id}", response={200: BusinessSchema, 404: MessageSchema})
 def update_business(request, business_id: int, data: BusinessSchema):
   try:
     business = Business.objects.get(pk=business_id)
@@ -80,7 +80,7 @@ def update_business(request, business_id: int, data: BusinessSchema):
 
 
 # Delete a Business
-@api.delete("/business/{business_id}", response={204: MessageSchema, 404: MessageSchema})
+@api.delete("/businesses/{business_id}", response={204: MessageSchema, 404: MessageSchema})
 def delete_business(request, business_id):
   try:
     business = Business.objects.get(pk=business_id)

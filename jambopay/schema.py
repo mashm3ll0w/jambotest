@@ -1,5 +1,6 @@
 from datetime import datetime
-from ninja import Schema
+from ninja import Schema, Field, ModelSchema
+from jambopay.models import Customer, Business
 
 class CustomerSchema(Schema):
   name: str
@@ -10,10 +11,11 @@ class CustomerSchema(Schema):
 
 class BusinessSchema(Schema):
   name: str
-  owner: CustomerSchema
+  owner: str = Field(alias="owner.name")
   category: str
   registration_date: datetime
   location_information: str
+  business_age: str = Field(alias="business_age")
 
 class MessageSchema(Schema):
   message: str
