@@ -59,3 +59,32 @@ def business(request, business_id):
     return 200, business
   except Business.DoesNotExist:
     return 404, {"message": "Business not found"}
+
+# Create a new Business
+@api.post("/businesses", response={201: BusinessSchema})
+def create_business(request, business: BusinessSchema):
+  Business.objects.create(**business.dict())
+  return business
+
+# Edit Business details
+@api.put("/business/{business_id}", response={200: BusinessSchema, 404: MessageSchema})
+def update_business(request, business_id: int, data: BusinessSchema):
+  try:
+    business = Business.objects.get(pk=business_id)
+    for attribute, value in data.dict().items():
+      setattr(business, attribute, value)
+    business.save()
+    return 200, business
+  except Business.DoesNotExist:
+    return 404, {"message": "Business not found"}
+
+
+# Delete a Business
+@api.delete("/business/{business_id}", response={204: MessageSchema, 404: MessageSchema})
+def delete_business(request, business_id):
+  try:
+    business = Business.objects.get(pk=business_id)
+    business.delete()
+    return 204, {"message": "Business successfully deleted!"}
+  except Business.DoesNotExist:
+    return 404, {"message": "Business not found"}
