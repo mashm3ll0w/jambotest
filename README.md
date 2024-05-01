@@ -1,8 +1,8 @@
-# Events App Team SpitFire
+# Jambo App
 
 ## Table Of Contents
 
-- [Events App Team SpitFire](#events-app-team-spitfire)
+- [Jambo App](#jambo-app)
   - [Table Of Contents](#table-of-contents)
   - [Introduction](#introduction)
   - [Local Server Setup](#local-server-setup)
