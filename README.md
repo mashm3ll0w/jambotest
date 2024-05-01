@@ -2,7 +2,7 @@
 
 ## Table Of Contents
 
-- [Events App Team SpitFire](#events-app-team-spitfire)
+- [JAMBOTEST Crud App](#jambotest-crud-app)
   - [Table Of Contents](#table-of-contents)
   - [Introduction](#introduction)
   - [Local Server Setup](#local-server-setup)
